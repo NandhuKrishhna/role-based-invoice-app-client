@@ -1,4 +1,4 @@
-import { useDeleteUserMutation } from "@/redux/api/SuperAdminApi"
+import { useDeleteUserMutation } from "@/redux/api/AdminApi"
 import toast from "react-hot-toast";
 import type { ErrorResponse } from "react-router-dom";
 

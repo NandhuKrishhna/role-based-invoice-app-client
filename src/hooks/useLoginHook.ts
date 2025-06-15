@@ -1,4 +1,4 @@
-import { useLoginMutation } from "@/redux/api/SuperAdminApi";
+import { useLoginMutation } from "@/redux/api/AdminApi";
 import { setCredentials } from "@/redux/slice/authSlice";
 import type { LoginData } from "@/utils/types/error.types";
 import toast from "react-hot-toast";
@@ -14,8 +14,12 @@ const useLoginHook = () => {
         try {
             const response = await login(data).unwrap();
             toast.success(response.message);
-            dispatch(setCredentials({ ...response.response }));
-            navigate("/dashboard");
+            const userData = response.response;
+            dispatch(setCredentials(userData));
+            const redirectPath = userData.role === "SUPER_ADMIN" ? "/dashboard" : "/invoice";
+            console.log("Navigating to:", redirectPath);
+            navigate(redirectPath);
+
         } catch (error) {
             const err = error as ErrorResponse;
             if (err.data?.message) {

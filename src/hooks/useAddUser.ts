@@ -1,5 +1,5 @@
 import type { CreateAdminData } from "@/Components/add-admin-modal";
-import { useCreateAdminMutation } from "@/redux/api/SuperAdminApi"
+import { useCreateAdminMutation } from "@/redux/api/AdminApi"
 import type { ErrorResponse } from "@/utils/types/error.types";
 import type { CreateAdminType } from "@/utils/types/super-admins.types";
 import { useState } from "react";
